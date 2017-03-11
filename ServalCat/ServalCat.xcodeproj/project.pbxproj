@@ -10,6 +10,17 @@
 		165E62EC1E73C1BF00397E58 /* ServalCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 165E62E21E73C1BF00397E58 /* ServalCat.framework */; };
 		165E62F11E73C1BF00397E58 /* ServalCatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E62F01E73C1BF00397E58 /* ServalCatTests.swift */; };
 		165E62F31E73C1BF00397E58 /* ServalCat.h in Headers */ = {isa = PBXBuildFile; fileRef = 165E62E51E73C1BF00397E58 /* ServalCat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		165E63041E73C29800397E58 /* Hideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E62FC1E73C29800397E58 /* Hideable.swift */; };
+		165E63051E73C29800397E58 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E62FD1E73C29800397E58 /* ImageManager.swift */; };
+		165E63061E73C29800397E58 /* ImagePreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E62FE1E73C29800397E58 /* ImagePreviewController.swift */; };
+		165E63071E73C29800397E58 /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E62FF1E73C29800397E58 /* ImagePreviewView.swift */; };
+		165E63081E73C29800397E58 /* ImagePreviewViewTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */; };
+		165E63091E73C29800397E58 /* ImagePreviewViewToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */; };
+		165E630B1E73C29800397E58 /* Showable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63031E73C29800397E58 /* Showable.swift */; };
+		165E63541E73C95100397E58 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63531E73C95100397E58 /* UIViewController.swift */; };
+		165E63561E73D05000397E58 /* ImagePreviewViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63551E73D05000397E58 /* ImagePreviewViewBackground.swift */; };
+		165E63581E73D0A700397E58 /* ImagePreviewViewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */; };
+		165E635F1E73F92E00397E58 /* ThumbnailImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E635E1E73F92E00397E58 /* ThumbnailImageButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +40,17 @@
 		165E62EB1E73C1BF00397E58 /* ServalCatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServalCatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		165E62F01E73C1BF00397E58 /* ServalCatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServalCatTests.swift; sourceTree = "<group>"; };
 		165E62F21E73C1BF00397E58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		165E62FC1E73C29800397E58 /* Hideable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hideable.swift; sourceTree = "<group>"; };
+		165E62FD1E73C29800397E58 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		165E62FE1E73C29800397E58 /* ImagePreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewController.swift; sourceTree = "<group>"; };
+		165E62FF1E73C29800397E58 /* ImagePreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
+		165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewTitleBar.swift; sourceTree = "<group>"; };
+		165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewToolBar.swift; sourceTree = "<group>"; };
+		165E63031E73C29800397E58 /* Showable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showable.swift; sourceTree = "<group>"; };
+		165E63531E73C95100397E58 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		165E63551E73D05000397E58 /* ImagePreviewViewBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewBackground.swift; sourceTree = "<group>"; };
+		165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewImageView.swift; sourceTree = "<group>"; };
+		165E635E1E73F92E00397E58 /* ThumbnailImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailImageButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +95,17 @@
 			children = (
 				165E62E51E73C1BF00397E58 /* ServalCat.h */,
 				165E62E61E73C1BF00397E58 /* Info.plist */,
+				165E63031E73C29800397E58 /* Showable.swift */,
+				165E62FC1E73C29800397E58 /* Hideable.swift */,
+				165E63531E73C95100397E58 /* UIViewController.swift */,
+				165E635E1E73F92E00397E58 /* ThumbnailImageButton.swift */,
+				165E62FE1E73C29800397E58 /* ImagePreviewController.swift */,
+				165E62FD1E73C29800397E58 /* ImageManager.swift */,
+				165E62FF1E73C29800397E58 /* ImagePreviewView.swift */,
+				165E63551E73D05000397E58 /* ImagePreviewViewBackground.swift */,
+				165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */,
+				165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */,
+				165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */,
 			);
 			path = ServalCat;
 			sourceTree = "<group>";
@@ -149,6 +182,7 @@
 					165E62E11E73C1BF00397E58 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = KC8N9BMQJY;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					165E62EA1E73C1BF00397E58 = {
@@ -198,6 +232,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165E63041E73C29800397E58 /* Hideable.swift in Sources */,
+				165E63561E73D05000397E58 /* ImagePreviewViewBackground.swift in Sources */,
+				165E63581E73D0A700397E58 /* ImagePreviewViewImageView.swift in Sources */,
+				165E63071E73C29800397E58 /* ImagePreviewView.swift in Sources */,
+				165E63541E73C95100397E58 /* UIViewController.swift in Sources */,
+				165E63051E73C29800397E58 /* ImageManager.swift in Sources */,
+				165E635F1E73F92E00397E58 /* ThumbnailImageButton.swift in Sources */,
+				165E63081E73C29800397E58 /* ImagePreviewViewTitleBar.swift in Sources */,
+				165E63061E73C29800397E58 /* ImagePreviewController.swift in Sources */,
+				165E630B1E73C29800397E58 /* Showable.swift in Sources */,
+				165E63091E73C29800397E58 /* ImagePreviewViewToolBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +367,7 @@
 		165E62F71E73C1BF00397E58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
@@ -330,10 +376,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ServalCat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.ServalCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,6 +389,7 @@
 		165E62F81E73C1BF00397E58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
@@ -349,6 +398,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ServalCat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.crazism.ServalCat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,6 +410,7 @@
 		165E62FA1E73C1BF00397E58 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				INFOPLIST_FILE = ServalCatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -372,6 +423,7 @@
 		165E62FB1E73C1BF00397E58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = KC8N9BMQJY;
 				INFOPLIST_FILE = ServalCatTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -400,6 +452,7 @@
 				165E62F81E73C1BF00397E58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		165E62F91E73C1BF00397E58 /* Build configuration list for PBXNativeTarget "ServalCatTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +461,7 @@
 				165E62FB1E73C1BF00397E58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
