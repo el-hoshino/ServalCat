@@ -43,6 +43,7 @@ public class ImagePreviewController: UIViewController {
 	
 	public override func loadView() {
 		self.previewView.frame = UIScreen.main.bounds
+		self.previewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		self.view = self.previewView
 	}
 	
@@ -99,7 +100,7 @@ public class ImagePreviewController: UIViewController {
 	}
 	
 	private func updateViews() {
-		self.previewView.updateImages()
+		self.previewView.updateImage()
 	}
 	
 }
@@ -107,8 +108,6 @@ public class ImagePreviewController: UIViewController {
 extension ImagePreviewController {
 	
 	fileprivate func onBackButtonTapped() {
-		let imageView = UIImageView()
-		self.parent?.view.addSubview(imageView)
 		self.dismissAction?()
 	}
 	
@@ -141,9 +140,11 @@ extension ImagePreviewController {
 
 extension ImagePreviewController {
 	
-	func showUpAfterMovedToParentController() {
+	func showUpAfterMovedToParentController(withImageAt index: Int) {
+		self.imageManager.setIndex(to: index)
 		self.previewView.setBackgroundAlpha(to: 1)
 		self.previewView.showBars()
+		self.previewView.updateImage()
 	}
 	
 	func hideBeforeRemovingFromParentController() {

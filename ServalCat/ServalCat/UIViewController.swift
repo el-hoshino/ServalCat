@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
 	
-	public func showImagePreviewController(_ controller: ImagePreviewController, from thumbnailView: UIView? = nil) {
+	public func showImagePreviewController(_ controller: ImagePreviewController, withImageAt index: Int, from thumbnailView: UIView? = nil) {
 		
 		let animated = thumbnailView != nil
 		
@@ -27,7 +27,7 @@ extension UIViewController {
 		
 		if let thumbnailView = thumbnailView {
 			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
-				controller.showUpAfterMovedToParentController()
+				controller.showUpAfterMovedToParentController(withImageAt: index)
 			}, completion: { finished in
 //				completion?(finished)
 				controller.viewDidAppear(animated)
@@ -36,7 +36,7 @@ extension UIViewController {
 			
 		} else {
 //			completion?(true)
-			controller.showUpAfterMovedToParentController()
+			controller.showUpAfterMovedToParentController(withImageAt: index)
 			controller.viewDidAppear(animated)
 			self.viewDidDisappear(animated)
 		}

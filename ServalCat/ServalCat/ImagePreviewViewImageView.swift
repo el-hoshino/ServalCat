@@ -39,6 +39,7 @@ class ImagePreviewViewImageView: UIView {
 		let view = self.imageView
 		view.frame = self.bounds
 		view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		view.contentMode = .scaleAspectFit
 		self.addSubview(view)
 	}
 	

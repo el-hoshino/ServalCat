@@ -9,7 +9,9 @@
 import UIKit
 
 protocol ImagePreviewViewDataSource: class {
-	func getImages(for imagePreviewView: ImagePreviewView) -> [UIImage]
+	func getImage(for imagePreviewView: ImagePreviewView) -> UIImage?
+	func getNextImage(for imagePreviewView: ImagePreviewView) -> UIImage?
+	func getPreviousImage(for imagePreviewView: ImagePreviewView) -> UIImage?
 }
 
 public class ImagePreviewView: UIView {
@@ -103,11 +105,13 @@ extension ImagePreviewView {
 
 extension ImagePreviewView {
 	
-	func updateImages() {
+	func updateImage() {
 		
-		guard let images = self.dataSource?.getImages(for: self) else {
+		guard let image = self.dataSource?.getImage(for: self) else {
 			return
 		}
+		
+		self.imageView.image = image
 		
 	}
 	
