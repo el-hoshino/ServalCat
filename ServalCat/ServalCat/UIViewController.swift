@@ -43,7 +43,7 @@ extension UIViewController {
 		
 	}
 	
-	public func hideImagePreviewController(_ controller: ImagePreviewController, to thumbnailView: ((Int) -> UIView)? = nil) {
+	public func hideImagePreviewController(_ controller: ImagePreviewController, to thumbnailView: ((Int) -> UIView?)? = nil) {
 		
 		guard let parent = controller.parent, self === parent else {
 			return
@@ -55,28 +55,25 @@ extension UIViewController {
 		
 		self.viewWillAppear(animated)
 		
-		func moveView() {
-//			self.view.frame.origin.x = parent.view.bounds.width
-		}
-		
 		func postMoveAction() {
 			controller.view.removeFromSuperview()
 			controller.removeFromParentViewController()
+			self.viewDidAppear(animated)
 		}
 		
 		if let thumbnailView = thumbnailView?(controller.currentIndex) {
-			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
-				moveView()
+			
+			let frame = thumbnailView.convert(thumbnailView.bounds, to: controller.previewView)
+			
+			UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+				controller.hideBeforeRemovingFromParentController(andMoveCurrentImageTo: frame)
+				
 			}, completion: { (finished) in
 				postMoveAction()
-//				completion?(finished)
-				self.viewDidAppear(animated)
 			})
 			
 		} else {
 			postMoveAction()
-//			completion?(true)
-			self.viewDidAppear(animated)
 		}
 		
 	}

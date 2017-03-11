@@ -18,7 +18,7 @@ public class ImagePreviewController: UIViewController {
 	
 	fileprivate(set) var state: State = .normal
 	
-	fileprivate var dismissAction: (() -> Void)?
+	fileprivate var dismissAction: ((ImagePreviewController) -> Void)?
 	
 	fileprivate let imageManager: ImageManager
 	
@@ -136,7 +136,7 @@ public class ImagePreviewController: UIViewController {
 extension ImagePreviewController {
 	
 	fileprivate func onBackButtonTapped() {
-		self.dismissAction?()
+		self.dismissAction?(self)
 	}
 	
 }
@@ -300,7 +300,7 @@ extension ImagePreviewController {
 
 extension ImagePreviewController {
 	
-	public func setDismissAction(_ action: (() -> Void)?) {
+	public func setDismissAction(_ action: ((ImagePreviewController) -> Void)?) {
 		self.dismissAction = action
 	}
 	
@@ -311,11 +311,7 @@ extension ImagePreviewController {
 	func initialize(imageIndex: Int, initialFrame: CGRect?) {
 		self.imageManager.setIndex(to: imageIndex)
 		self.previewView.updateImages()
-		self.previewView.setInitialCurrentImageFrame(initialFrame)
-	}
-	
-	func postShowUp() {
-		self.previewView.setInitialCurrentImageFrame(nil)
+		self.previewView.setCurrentImageFrame(initialFrame)
 	}
 	
 }
@@ -329,9 +325,10 @@ extension ImagePreviewController {
 		
 	}
 	
-	func hideBeforeRemovingFromParentController() {
+	func hideBeforeRemovingFromParentController(andMoveCurrentImageTo frame: CGRect?) {
 		self.previewView.setBackgroundAlpha(to: 0)
 		self.previewView.hideBars()
+		self.previewView.setCurrentImageFrame(frame)
 	}
 	
 }

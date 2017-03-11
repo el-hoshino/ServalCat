@@ -26,9 +26,9 @@ public class ImagePreviewView: UIView {
 	fileprivate let titleBar: ImagePreviewViewTitleBar
 	fileprivate let toolBar: ImagePreviewViewToolBar
 	
-	fileprivate var previousImageView: ImagePreviewViewImageView
-	fileprivate var currentImageView: ImagePreviewViewImageView
-	fileprivate var nextImageView: ImagePreviewViewImageView
+	fileprivate let previousImageView: ImagePreviewViewImageView
+	let currentImageView: ImagePreviewViewImageView
+	fileprivate let nextImageView: ImagePreviewViewImageView
 	
 	fileprivate var hideBarsTimer: Timer?
 	
@@ -47,6 +47,7 @@ public class ImagePreviewView: UIView {
 		
 		self.setupView()
 		self.addSubviews()
+		self.setupSubviews()
 		self.setupGestureRecognizer()
 		
 	}
@@ -96,7 +97,6 @@ public class ImagePreviewView: UIView {
 	private func layoutImageViews() {
 		
 		self.previousImageView.frame = self.viewFrame(for: .previous)
-		self.currentImageView.frame = self.viewFrame(for: .current)
 		self.nextImageView.frame = self.viewFrame(for: .next)
 		
 	}
@@ -113,6 +113,16 @@ public class ImagePreviewView: UIView {
 		self.addSubview(self.nextImageView)
 		self.addSubview(self.titleBar)
 		self.addSubview(self.toolBar)
+	}
+	
+	private func setupCurrentImageView() {
+		let view = self.currentImageView
+		view.frame = self.bounds
+		view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+	}
+	
+	private func setupSubviews() {
+		self.setupCurrentImageView()
 	}
 	
 	private func setupGestureRecognizer() {
@@ -204,7 +214,7 @@ extension ImagePreviewView {
 
 extension ImagePreviewView {
 	
-	func setInitialCurrentImageFrame(_ frame: CGRect?) {
+	func setCurrentImageFrame(_ frame: CGRect?) {
 		if let frame = frame {
 			self.currentImageView.frame = frame
 		}
