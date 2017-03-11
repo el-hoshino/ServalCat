@@ -82,13 +82,6 @@ public class ImagePreviewController: UIViewController {
 		}
 	}
 	
-	private func setupDownloadButton() {
-		let button = UIButton()
-		button.addTarget(self, action: #selector(self.onDownloadButtonTapped), for: .touchUpInside)
-		button.setTitle("⬇️", for: .normal)
-		self.previewView.setButtonsInToolbar([button])
-	}
-	
 	private func setupOnImageTappedGesture() {
 		
 		self.previewView.setOnImageTappedAction { [weak self] (_) in
@@ -127,7 +120,6 @@ public class ImagePreviewController: UIViewController {
 	
 	private func setupButtons() {
 		self.setupBackButton()
-		self.setupDownloadButton()
 	}
 	
 	private func setupGestures() {
@@ -294,6 +286,14 @@ extension ImagePreviewController {
 		
 		self.moveImagePreview(in: view, by: .zero)
 		
+	}
+	
+}
+
+extension ImagePreviewController {
+	
+	public func setToolbarButtons(_ buttons: [UIButton]) {
+		self.previewView.setButtonsInToolbar(buttons)
 	}
 	
 }
