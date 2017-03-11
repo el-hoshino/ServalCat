@@ -43,7 +43,7 @@ extension UIViewController {
 		
 	}
 	
-	public func hideImagePreviewController(_ controller: ImagePreviewController, to thumbnailView: UIView? = nil) {
+	public func hideImagePreviewController(_ controller: ImagePreviewController, to thumbnailView: ((Int) -> UIView)? = nil) {
 		
 		guard let parent = controller.parent, self === parent else {
 			return
@@ -66,7 +66,7 @@ extension UIViewController {
 			controller.didMove(toParentViewController: nil)
 		}
 		
-		if let thumbnailView = thumbnailView {
+		if let thumbnailView = thumbnailView?(controller.currentIndex) {
 			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
 				moveView()
 			}, completion: { (finished) in

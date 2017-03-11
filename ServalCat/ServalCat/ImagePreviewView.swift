@@ -24,6 +24,8 @@ public class ImagePreviewView: UIView {
 	
 	fileprivate var imageView: ImagePreviewViewImageView
 	
+	fileprivate var hideBarsTimer: Timer?
+	
 	public init() {
 		
 		self.background = ImagePreviewViewBackground()
@@ -83,6 +85,30 @@ public class ImagePreviewView: UIView {
 
 extension ImagePreviewView {
 	
+	@objc private func hideBars(sender: Timer) {
+		self.hideBars()
+	}
+	
+	func hideBars(after timeInterval: TimeInterval) {
+		
+		if let timer = self.hideBarsTimer {
+			timer.invalidate()
+			self.hideBarsTimer = nil
+		}
+		
+		let timer = Timer.scheduledTimer(timeInterval: timeInterval,
+		                                 target: self,
+		                                 selector: #selector(self.hideBars(sender:)),
+		                                 userInfo: nil,
+		                                 repeats: false)
+		self.hideBarsTimer = timer
+		
+	}
+	
+}
+
+extension ImagePreviewView {
+	
 	func setBackgroundAlpha(to alpha: CGFloat) {
 		self.background.alpha = alpha
 	}
@@ -94,6 +120,7 @@ extension ImagePreviewView {
 	func showBars() {
 		self.titleBar.show()
 		self.toolBar.show()
+		self.hideBars(after: 2)
 	}
 	
 	func hideBars() {

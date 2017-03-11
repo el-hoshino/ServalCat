@@ -19,6 +19,10 @@ public class ImagePreviewController: UIViewController {
 		return view
 	}()
 	
+	var currentIndex: Int {
+		return self.imageManager.index
+	}
+	
 	public init(images: [UIImage]) {
 		
 		let imageManager = ImageManager(images: images)
@@ -51,6 +55,7 @@ public class ImagePreviewController: UIViewController {
 		super.viewDidLoad()
 		self.setupButtons()
 		self.setupDataSource()
+		self.setupGestures()
 		self.updateViews()
 	}
 	
@@ -77,9 +82,8 @@ public class ImagePreviewController: UIViewController {
 	}
 	
 	private func setupOnImageTappedGesture() {
-		self.previewView.setOnImageTappedAction { (_) in
-			print("tapped")
-			self.previewView.showBars()
+		self.previewView.setOnImageTappedAction { [weak self] (_) in
+			self?.previewView.showBars()
 		}
 	}
 	
@@ -96,7 +100,8 @@ public class ImagePreviewController: UIViewController {
 	}
 	
 	private func setupGestures() {
-		
+		self.setupOnImageTappedGesture()
+		self.setupOnImagedPannedGesture()
 	}
 	
 	private func updateViews() {
