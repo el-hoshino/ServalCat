@@ -82,16 +82,31 @@ public class ImagePreviewController: UIViewController {
 	}
 	
 	private func setupOnImageTappedGesture() {
+		
 		self.previewView.setOnImageTappedAction { [weak self] (_) in
 			self?.previewView.showBars()
 		}
+		
 	}
 	
 	private func setupOnImagedPannedGesture() {
-		self.previewView.setOnImagePannedAction { (translation, view) in
-			print(translation)
-			view.frame.origin += translation
+		
+		self.previewView.setOnImagePannedAction { (gesture, view) in
+			
+			switch gesture.state {
+			case .began, .changed:
+				self.move(view, by: gesture.translation(in: nil))
+				gesture.setTranslation(.zero, in: nil)
+				
+			case .cancelled, .ended:
+				self.resetPosition(of: view)
+				
+			case .possible, .failed:
+				break
+			}
+			
 		}
+		
 	}
 	
 	private func setupButtons() {
@@ -131,6 +146,26 @@ extension ImagePreviewController {
 	
 	@objc fileprivate func onDownloadButtonTapped() {
 		self.download()
+	}
+	
+}
+
+extension ImagePreviewController {
+	
+	fileprivate func showBars() {
+		self.previewView.showBars()
+	}
+	
+}
+
+extension ImagePreviewController {
+	
+	fileprivate func move(_ view: UIView, by translation: CGPoint) {
+		view.frame.origin += translation
+	}
+	
+	fileprivate func resetPosition(of view: UIView) {
+		view.frame.origin = .zero
 	}
 	
 }

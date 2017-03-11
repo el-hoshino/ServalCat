@@ -21,8 +21,8 @@ class ImagePreviewViewImageView: UIView {
 		}
 	}
 	
-	fileprivate var onTapGestureRecognized: ((UIView) -> Void)?
-	fileprivate var onPanGestureRecognized: ((_ translation: CGPoint, _ view: UIView) -> Void)?
+	fileprivate var onTapGestureRecognized: ((_ recognizer: UITapGestureRecognizer, _ view: UIView) -> Void)?
+	fileprivate var onPanGestureRecognized: ((_ recognizer: UIPanGestureRecognizer, _ view: UIView) -> Void)?
 	
 	override init(frame: CGRect) {
 		self.imageView = UIImageView()
@@ -58,24 +58,22 @@ class ImagePreviewViewImageView: UIView {
 extension ImagePreviewViewImageView {
 	
 	@objc fileprivate func onTapGestureRecognized(sender: UITapGestureRecognizer) {
-		self.onTapGestureRecognized?(self)
+		self.onTapGestureRecognized?(sender, self)
 	}
 	
 	@objc fileprivate func onPanGestureRecognized(sender: UIPanGestureRecognizer) {
-		let translation = sender.translation(in: nil)
-		self.onPanGestureRecognized?(translation, self)
-		sender.setTranslation(.zero, in: nil)
+		self.onPanGestureRecognized?(sender, self)
 	}
 	
 }
 
 extension ImagePreviewViewImageView {
 	
-	func setOnTapGestureRecognizedAction(_ action: ((UIView) -> Void)?) {
+	func setOnTapGestureRecognizedAction(_ action: ((_ recognizer: UITapGestureRecognizer, _ view: UIView) -> Void)?) {
 		self.onTapGestureRecognized = action
 	}
 	
-	func setOnPanGestureRecognizedAction(_ action: ((_ translation: CGPoint, _ view: UIView) -> Void)?) {
+	func setOnPanGestureRecognizedAction(_ action: ((_ recognizer: UIPanGestureRecognizer, _ view: UIView) -> Void)?) {
 		self.onPanGestureRecognized = action
 	}
 	

@@ -146,11 +146,11 @@ extension ImagePreviewView {
 
 extension ImagePreviewView {
 	
-	func setOnImageTappedAction(_ action: ((UIView) -> Void)?) {
+	func setOnImageTappedAction(_ action: ((_ recognizer: UITapGestureRecognizer, _ view: UIView) -> Void)?) {
 		self.imageView.setOnTapGestureRecognizedAction(action)
 	}
 	
-	func setOnImagePannedAction(_ action: ((_ translation: CGPoint, _ view: UIView) -> Void)?) {
+	func setOnImagePannedAction(_ action: ((_ recognizer: UIPanGestureRecognizer, _ view: UIView) -> Void)?) {
 		self.imageView.setOnPanGestureRecognizedAction(action)
 	}
 	
