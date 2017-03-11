@@ -308,11 +308,25 @@ extension ImagePreviewController {
 
 extension ImagePreviewController {
 	
-	func showUpAfterMovedToParentController(withImageAt index: Int) {
-		self.imageManager.setIndex(to: index)
+	func initialize(imageIndex: Int, initialFrame: CGRect?) {
+		self.imageManager.setIndex(to: imageIndex)
+		self.previewView.updateImages()
+		self.previewView.setInitialCurrentImageFrame(initialFrame)
+	}
+	
+	func postShowUp() {
+		self.previewView.setInitialCurrentImageFrame(nil)
+	}
+	
+}
+
+extension ImagePreviewController {
+	
+	func showUpAfterMovedToParentController() {
 		self.previewView.setBackgroundAlpha(to: 1)
 		self.previewView.showBars()
-		self.previewView.updateImages()
+		self.previewView.placePreviewImages()
+		
 	}
 	
 	func hideBeforeRemovingFromParentController() {

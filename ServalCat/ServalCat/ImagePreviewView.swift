@@ -204,6 +204,16 @@ extension ImagePreviewView {
 
 extension ImagePreviewView {
 	
+	func setInitialCurrentImageFrame(_ frame: CGRect?) {
+		if let frame = frame {
+			self.currentImageView.frame = frame
+		}
+	}
+	
+}
+
+extension ImagePreviewView {
+	
 	func setImageViewPosition(withTranslation translation: CGPoint) {
 		
 		self.previousImageView.frame = self.viewFrame(for: .previous, withOffset: translation)
@@ -266,6 +276,18 @@ extension ImagePreviewView {
 	
 	func setBackgroundAlpha(to alpha: CGFloat) {
 		self.background.alpha = alpha
+	}
+	
+}
+
+extension ImagePreviewView {
+	
+	func placePreviewImages() {
+		
+		self.previousImageView.frame = self.viewFrame(for: .previous)
+		self.currentImageView.frame = self.viewFrame(for: .current)
+		self.nextImageView.frame = self.viewFrame(for: .next)
+		
 	}
 	
 }

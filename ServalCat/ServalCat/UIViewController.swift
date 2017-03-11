@@ -14,10 +14,7 @@ extension UIViewController {
 		
 		let animated = thumbnailView != nil
 		
-		controller.willMove(toParentViewController: self)
-		
 		self.viewWillDisappear(animated)
-		controller.viewWillAppear(animated)
 		
 		self.addChildViewController(controller)
 		controller.view.frame = self.view.bounds
@@ -26,17 +23,20 @@ extension UIViewController {
 		controller.didMove(toParentViewController: self)
 		
 		if let thumbnailView = thumbnailView {
-			UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseOut], animations: {
-				controller.showUpAfterMovedToParentController(withImageAt: index)
+			
+			let frame = thumbnailView.convert(thumbnailView.bounds, to: controller.previewView)
+			controller.initialize(imageIndex: index, initialFrame: frame)
+			
+			UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+				controller.showUpAfterMovedToParentController()
+				
 			}, completion: { finished in
-//				completion?(finished)
-				controller.viewDidAppear(animated)
 				self.viewDidDisappear(animated)
 			})
 			
 		} else {
-//			completion?(true)
-			controller.showUpAfterMovedToParentController(withImageAt: index)
+			controller.initialize(imageIndex: index, initialFrame: nil)
+			controller.showUpAfterMovedToParentController()
 			controller.viewDidAppear(animated)
 			self.viewDidDisappear(animated)
 		}
@@ -53,7 +53,6 @@ extension UIViewController {
 		
 		controller.willMove(toParentViewController: nil)
 		
-		controller.viewWillDisappear(animated)
 		self.viewWillAppear(animated)
 		
 		func moveView() {
@@ -63,7 +62,6 @@ extension UIViewController {
 		func postMoveAction() {
 			controller.view.removeFromSuperview()
 			controller.removeFromParentViewController()
-			controller.didMove(toParentViewController: nil)
 		}
 		
 		if let thumbnailView = thumbnailView?(controller.currentIndex) {
@@ -72,15 +70,13 @@ extension UIViewController {
 			}, completion: { (finished) in
 				postMoveAction()
 //				completion?(finished)
-				parent.viewDidAppear(animated)
-				self.viewDidDisappear(animated)
+				self.viewDidAppear(animated)
 			})
 			
 		} else {
 			postMoveAction()
 //			completion?(true)
 			self.viewDidAppear(animated)
-			controller.viewDidDisappear(animated)
 		}
 		
 	}
