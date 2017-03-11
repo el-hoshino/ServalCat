@@ -21,10 +21,6 @@ class ImageManager {
 		self.init(images: [])
 	}
 	
-	deinit {
-		print("ImageManager deinited")
-	}
-	
 }
 
 extension ImageManager {

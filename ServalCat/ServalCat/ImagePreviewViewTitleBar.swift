@@ -32,10 +32,6 @@ class ImagePreviewViewTitleBar: UIView, Showable, Hideable {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	deinit {
-		print("ImagePreviewViewTitleBar deinited")
-	}
-	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.layoutTitleLabel()
@@ -56,16 +52,16 @@ class ImagePreviewViewTitleBar: UIView, Showable, Hideable {
 	private func setupButton() {
 		let view = self.backButton
 		view.setTitleColor(.white, for: .normal)
-		view.setTitle("⬅️", for: .normal)
+		view.setTitle("×", for: .normal)
 		view.addTarget(self, action: #selector(self.onBackButtonTapped(sender:)), for: .touchUpInside)
 		self.addSubview(view)
 	}
 	
 	private func layoutTitleLabel() {
 		let view = self.titleLabel
-		view.frame.size.width = self.bounds.width * 0.6
+		view.frame.size.width = 40
 		view.frame.size.height = 40
-		view.frame.origin.x = self.bounds.width * 0.2
+		view.frame.origin.x = self.bounds.width - 40
 		view.frame.origin.y = self.bounds.height - 40
 	}
 	
@@ -73,7 +69,7 @@ class ImagePreviewViewTitleBar: UIView, Showable, Hideable {
 		let view = self.backButton
 		view.frame.size.width = self.bounds.width * 0.2
 		view.frame.size.height = 40
-		view.frame.origin.x = 0
+		view.frame.origin.x = self.bounds.width * 0.8
 		view.frame.origin.y = self.bounds.height - 40
 	}
 	

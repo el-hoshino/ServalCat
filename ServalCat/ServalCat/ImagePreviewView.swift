@@ -56,10 +56,6 @@ public class ImagePreviewView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	deinit {
-		print("ImagePreviewView deinited")
-	}
-	
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 		self.layoutBackground()
