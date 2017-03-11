@@ -273,7 +273,7 @@ extension ImagePreviewController {
 		
 		switch (view.currentImagePosition.y, velocity.y) {
 		case let (a, b) where (a > 0 && b < 0) || (a < 0 && b > 0):
-			self.moveImagePreview(in: view, by: .zero)
+			self.setToCurrentImage(for: view)
 			
 		case let (a, b) where (a > 0 && b > 0) || (a < 0 && b < 0):
 			self.dismissAction?(self)
@@ -282,7 +282,7 @@ extension ImagePreviewController {
 			self.dismissAction?(self)
 			
 		default:
-			self.moveImagePreview(in: view, by: .zero)
+			self.setToCurrentImage(for: view)
 		}
 		
 	}

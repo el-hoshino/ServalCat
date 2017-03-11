@@ -239,7 +239,8 @@ extension ImagePreviewView {
 	func setImageDismissingProgress(to progress: CGFloat) {
 		
 		let alpha = 1 - progress
-		self.background.alpha = alpha
+		self.setBackgroundAlpha(to: alpha)
+		self.setCurrentImageViewAlpha(to: alpha)
 		
 		let width = (1 - progress * progress) * self.bounds.width
 		let x = (self.bounds.width - width) / 2
@@ -302,6 +303,14 @@ extension ImagePreviewView {
 	
 	func setBackgroundAlpha(to alpha: CGFloat) {
 		self.background.alpha = alpha
+	}
+	
+}
+
+extension ImagePreviewView {
+	
+	func setCurrentImageViewAlpha(to alpha: CGFloat) {
+		self.currentImageView.alpha = alpha
 	}
 	
 }
