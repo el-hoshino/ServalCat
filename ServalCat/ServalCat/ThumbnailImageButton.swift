@@ -41,6 +41,10 @@ public class ThumbnailImageButton: UIButton{
 		self.addTarget(self, action: #selector(self.onTapped(sender:)), for: .touchUpInside)
 	}
 	
+	deinit {
+		print("ThumbnailImageButton deinited")
+	}
+	
 }
 
 extension ThumbnailImageButton {

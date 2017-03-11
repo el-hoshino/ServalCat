@@ -35,6 +35,10 @@ class ImagePreviewViewImageView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	deinit {
+		print("ImagePreviewViewImageView deinited")
+	}
+	
 	private func setupImageView() {
 		let view = self.imageView
 		view.frame = self.bounds

@@ -22,6 +22,10 @@ class ImagePreviewViewToolBar: UIView, Showable, Hideable {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	deinit {
+		print("ImagePreviewViewToolBar deinited")
+	}
+	
 	private func setupView() {
 		self.backgroundColor = UIColor(white: 0, alpha: 0.5)
 	}

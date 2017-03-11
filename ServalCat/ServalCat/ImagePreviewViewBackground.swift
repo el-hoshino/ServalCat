@@ -24,4 +24,8 @@ class ImagePreviewViewBackground: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	deinit {
+		print("ImagePreviewViewBackground deinited")
+	}
+	
 }
