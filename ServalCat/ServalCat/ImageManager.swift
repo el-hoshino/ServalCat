@@ -1,6 +1,6 @@
 //
 //  ImageManager.swift
-//  ImagePreviewer
+//  ServalCat
 //
 //  Created by 史　翔新 on 2017/03/10.
 //  Copyright © 2017年 Crazism. All rights reserved.
