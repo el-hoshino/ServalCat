@@ -21,14 +21,10 @@ class ImagePreviewViewImageView: UIView {
 		}
 	}
 	
-	fileprivate var onTapGestureRecognized: ((_ recognizer: UITapGestureRecognizer, _ view: UIView) -> Void)?
-	fileprivate var onPanGestureRecognized: ((_ recognizer: UIPanGestureRecognizer, _ view: UIView) -> Void)?
-	
 	override init(frame: CGRect) {
 		self.imageView = UIImageView()
 		super.init(frame: frame)
 		self.setupImageView()
-		self.setupGestureRecognizer()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -45,40 +41,6 @@ class ImagePreviewViewImageView: UIView {
 		view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		view.contentMode = .scaleAspectFit
 		self.addSubview(view)
-	}
-	
-	private func setupGestureRecognizer() {
-		
-		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.onTapGestureRecognized(sender:)))
-		self.addGestureRecognizer(tapGestureRecognizer)
-		
-		let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.onPanGestureRecognized(sender:)))
-		self.addGestureRecognizer(panGestureRecognizer)
-		
-	}
-	
-}
-
-extension ImagePreviewViewImageView {
-	
-	@objc fileprivate func onTapGestureRecognized(sender: UITapGestureRecognizer) {
-		self.onTapGestureRecognized?(sender, self)
-	}
-	
-	@objc fileprivate func onPanGestureRecognized(sender: UIPanGestureRecognizer) {
-		self.onPanGestureRecognized?(sender, self)
-	}
-	
-}
-
-extension ImagePreviewViewImageView {
-	
-	func setOnTapGestureRecognizedAction(_ action: ((_ recognizer: UITapGestureRecognizer, _ view: UIView) -> Void)?) {
-		self.onTapGestureRecognized = action
-	}
-	
-	func setOnPanGestureRecognizedAction(_ action: ((_ recognizer: UIPanGestureRecognizer, _ view: UIView) -> Void)?) {
-		self.onPanGestureRecognized = action
 	}
 	
 }

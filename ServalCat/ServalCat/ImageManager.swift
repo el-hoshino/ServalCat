@@ -29,6 +29,18 @@ class ImageManager {
 
 extension ImageManager {
 	
+	var canDecreaseIndex: Bool {
+		return self.images.indices.contains(self.index.decreased)
+	}
+	
+	var canIncreaseIndex: Bool {
+		return self.images.indices.contains(self.index.increased)
+	}
+	
+}
+
+extension ImageManager {
+	
 	func setIndex(to newIndex: Int) {
 		
 		if self.images.indices.contains(newIndex) {
