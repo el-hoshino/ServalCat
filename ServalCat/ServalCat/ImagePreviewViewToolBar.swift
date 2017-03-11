@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImagePreviewViewToolBar: UIView, Showable, Hideable {
+class ImagePreviewViewToolBar: UIView {
 	
 	init() {
 		
@@ -27,6 +27,7 @@ class ImagePreviewViewToolBar: UIView, Showable, Hideable {
 	}
 	
 	private func setupView() {
+		self.alpha = 0
 		self.backgroundColor = UIColor(white: 0, alpha: 0.5)
 	}
 	
@@ -45,6 +46,30 @@ class ImagePreviewViewToolBar: UIView, Showable, Hideable {
 			button.frame.size.width = buttonWidth
 			button.frame.size.height = self.bounds.size.height
 		}
+	}
+	
+}
+
+extension ImagePreviewViewToolBar: Showable, Hideable {
+	
+	private func setAlpha() {
+		self.alpha = 1
+	}
+	
+	func show() {
+		
+		guard self.subviews.first(where: {$0 is UIButton}) != nil else {
+			return
+		}
+		
+		if Thread.isMainThread {
+			self.setAlpha()
+		} else {
+			DispatchQueue.main.async {
+				self.setAlpha()
+			}
+		}
+		
 	}
 	
 }

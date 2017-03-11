@@ -45,14 +45,8 @@ public class ImagePreviewView: UIView {
 		
 		super.init(frame: .zero)
 		
-		self.backgroundColor = .clear
-		self.addSubview(self.background)
-		self.addSubview(self.gestureRecognizingView)
-		self.addSubview(self.previousImageView)
-		self.addSubview(self.currentImageView)
-		self.addSubview(self.nextImageView)
-		self.addSubview(self.titleBar)
-		self.addSubview(self.toolBar)
+		self.setupView()
+		self.addSubviews()
 		self.setupGestureRecognizer()
 		
 	}
@@ -105,6 +99,20 @@ public class ImagePreviewView: UIView {
 		self.currentImageView.frame = self.viewFrame(for: .current)
 		self.nextImageView.frame = self.viewFrame(for: .next)
 		
+	}
+	
+	private func setupView() {
+		self.backgroundColor = .clear
+	}
+	
+	private func addSubviews() {
+		self.addSubview(self.background)
+		self.addSubview(self.gestureRecognizingView)
+		self.addSubview(self.previousImageView)
+		self.addSubview(self.currentImageView)
+		self.addSubview(self.nextImageView)
+		self.addSubview(self.titleBar)
+		self.addSubview(self.toolBar)
 	}
 	
 	private func setupGestureRecognizer() {
