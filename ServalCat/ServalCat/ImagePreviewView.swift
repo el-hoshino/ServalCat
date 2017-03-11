@@ -16,19 +16,24 @@ public class ImagePreviewView: UIView {
 	
 	weak var dataSource: ImagePreviewViewDataSource?
 	
+	fileprivate let background: ImagePreviewViewBackground
 	fileprivate let titleBar: ImagePreviewViewTitleBar
-	fileprivate let imageView: ScrollImageView
 	fileprivate let toolBar: ImagePreviewViewToolBar
+	
+	fileprivate var imageView: ImagePreviewViewImageView
 	
 	public init() {
 		
+		self.background = ImagePreviewViewBackground()
 		self.titleBar = ImagePreviewViewTitleBar()
-		self.imageView = ScrollImageView()
 		self.toolBar = ImagePreviewViewToolBar()
+		
+		self.imageView = ImagePreviewViewImageView()
 		
 		super.init(frame: .zero)
 		
-		self.backgroundColor = .white
+		self.backgroundColor = .clear
+		self.addSubview(self.background)
 		self.addSubview(self.imageView)
 		self.addSubview(self.titleBar)
 		self.addSubview(self.toolBar)
@@ -41,9 +46,15 @@ public class ImagePreviewView: UIView {
 	
 	public override func layoutSubviews() {
 		super.layoutSubviews()
+		self.layoutBackground()
 		self.layoutTitleBar()
 		self.layoutToolBar()
 		self.layoutImageView()
+	}
+	
+	private func layoutBackground() {
+		let view = self.background
+		view.frame = self.bounds
 	}
 	
 	private func layoutTitleBar() {
@@ -70,6 +81,14 @@ public class ImagePreviewView: UIView {
 
 extension ImagePreviewView {
 	
+	func setBackgroundAlpha(to alpha: CGFloat) {
+		self.background.alpha = alpha
+	}
+	
+}
+
+extension ImagePreviewView {
+	
 	func showBars() {
 		self.titleBar.show()
 		self.toolBar.show()
@@ -90,8 +109,18 @@ extension ImagePreviewView {
 			return
 		}
 		
-		self.imageView.setImages(images)
-		
+	}
+	
+}
+
+extension ImagePreviewView {
+	
+	func setOnImageTappedAction(_ action: ((UIView) -> Void)?) {
+		self.imageView.setOnTapGestureRecognizedAction(action)
+	}
+	
+	func setOnImagePannedAction(_ action: ((_ translation: CGPoint, _ view: UIView) -> Void)?) {
+		self.imageView.setOnPanGestureRecognizedAction(action)
 	}
 	
 }

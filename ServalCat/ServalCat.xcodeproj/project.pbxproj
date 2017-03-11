@@ -16,8 +16,10 @@
 		165E63071E73C29800397E58 /* ImagePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E62FF1E73C29800397E58 /* ImagePreviewView.swift */; };
 		165E63081E73C29800397E58 /* ImagePreviewViewTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */; };
 		165E63091E73C29800397E58 /* ImagePreviewViewToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */; };
-		165E630A1E73C29800397E58 /* ScrollImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63021E73C29800397E58 /* ScrollImageView.swift */; };
 		165E630B1E73C29800397E58 /* Showable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63031E73C29800397E58 /* Showable.swift */; };
+		165E63541E73C95100397E58 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63531E73C95100397E58 /* UIViewController.swift */; };
+		165E63561E73D05000397E58 /* ImagePreviewViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63551E73D05000397E58 /* ImagePreviewViewBackground.swift */; };
+		165E63581E73D0A700397E58 /* ImagePreviewViewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +45,10 @@
 		165E62FF1E73C29800397E58 /* ImagePreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewView.swift; sourceTree = "<group>"; };
 		165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewTitleBar.swift; sourceTree = "<group>"; };
 		165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewToolBar.swift; sourceTree = "<group>"; };
-		165E63021E73C29800397E58 /* ScrollImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollImageView.swift; sourceTree = "<group>"; };
 		165E63031E73C29800397E58 /* Showable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showable.swift; sourceTree = "<group>"; };
+		165E63531E73C95100397E58 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		165E63551E73D05000397E58 /* ImagePreviewViewBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewBackground.swift; sourceTree = "<group>"; };
+		165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +95,14 @@
 				165E62E61E73C1BF00397E58 /* Info.plist */,
 				165E63031E73C29800397E58 /* Showable.swift */,
 				165E62FC1E73C29800397E58 /* Hideable.swift */,
+				165E63531E73C95100397E58 /* UIViewController.swift */,
 				165E62FE1E73C29800397E58 /* ImagePreviewController.swift */,
 				165E62FD1E73C29800397E58 /* ImageManager.swift */,
 				165E62FF1E73C29800397E58 /* ImagePreviewView.swift */,
+				165E63551E73D05000397E58 /* ImagePreviewViewBackground.swift */,
 				165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */,
 				165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */,
-				165E63021E73C29800397E58 /* ScrollImageView.swift */,
+				165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */,
 			);
 			path = ServalCat;
 			sourceTree = "<group>";
@@ -224,11 +230,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				165E63041E73C29800397E58 /* Hideable.swift in Sources */,
+				165E63561E73D05000397E58 /* ImagePreviewViewBackground.swift in Sources */,
+				165E63581E73D0A700397E58 /* ImagePreviewViewImageView.swift in Sources */,
 				165E63071E73C29800397E58 /* ImagePreviewView.swift in Sources */,
+				165E63541E73C95100397E58 /* UIViewController.swift in Sources */,
 				165E63051E73C29800397E58 /* ImageManager.swift in Sources */,
 				165E63081E73C29800397E58 /* ImagePreviewViewTitleBar.swift in Sources */,
 				165E63061E73C29800397E58 /* ImagePreviewController.swift in Sources */,
-				165E630A1E73C29800397E58 /* ScrollImageView.swift in Sources */,
 				165E630B1E73C29800397E58 /* Showable.swift in Sources */,
 				165E63091E73C29800397E58 /* ImagePreviewViewToolBar.swift in Sources */,
 			);
@@ -440,6 +448,7 @@
 				165E62F81E73C1BF00397E58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		165E62F91E73C1BF00397E58 /* Build configuration list for PBXNativeTarget "ServalCatTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +457,7 @@
 				165E62FB1E73C1BF00397E58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

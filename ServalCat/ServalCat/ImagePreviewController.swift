@@ -8,13 +8,7 @@
 
 import UIKit
 
-public protocol ImagePreviewControllerPreDismissDelegate: class {
-	func imagePreviewController(_ controller: ImagePreviewController, willDismissFrom view: UIImageView, at index: Int)
-}
-
 public class ImagePreviewController: UIViewController {
-	
-	weak var preDismissDelegate: ImagePreviewControllerPreDismissDelegate?
 	
 	fileprivate var dismissAction: (() -> Void)?
 	
@@ -41,6 +35,10 @@ public class ImagePreviewController: UIViewController {
 	required public init?(coder aDecoder: NSCoder) {
 		self.imageManager = ImageManager(images: [])
 		super.init(coder: aDecoder)
+	}
+	
+	deinit {
+		print("ImagePreviewController deinit")
 	}
 	
 	public override func loadView() {
@@ -77,9 +75,27 @@ public class ImagePreviewController: UIViewController {
 		self.previewView.setButtonsInToolbar([button])
 	}
 	
+	private func setupOnImageTappedGesture() {
+		self.previewView.setOnImageTappedAction { (_) in
+			print("tapped")
+			self.previewView.showBars()
+		}
+	}
+	
+	private func setupOnImagedPannedGesture() {
+		self.previewView.setOnImagePannedAction { (translation, view) in
+			print(translation)
+			view.frame.origin += translation
+		}
+	}
+	
 	private func setupButtons() {
 		self.setupBackButton()
 		self.setupDownloadButton()
+	}
+	
+	private func setupGestures() {
+		
 	}
 	
 	private func updateViews() {
@@ -93,13 +109,7 @@ extension ImagePreviewController {
 	fileprivate func onBackButtonTapped() {
 		let imageView = UIImageView()
 		self.parent?.view.addSubview(imageView)
-		UIView.animate(withDuration: 0.2, animations: {
-			self.preDismissDelegate?.imagePreviewController(self, willDismissFrom: imageView, at: 0)
-			
-		}) { _ in
-			imageView.removeFromSuperview()
-			self.dismissAction?() ?? self.dismiss(animated: true, completion: nil)
-		}
+		self.dismissAction?()
 	}
 	
 }
@@ -123,8 +133,26 @@ extension ImagePreviewController {
 
 extension ImagePreviewController {
 	
-	func setDismissAction(_ action: (() -> Void)?) {
+	public func setDismissAction(_ action: (() -> Void)?) {
 		self.dismissAction = action
 	}
 	
+}
+
+extension ImagePreviewController {
+	
+	func showUpAfterMovedToParentController() {
+		self.previewView.setBackgroundAlpha(to: 1)
+		self.previewView.showBars()
+	}
+	
+	func hideBeforeRemovingFromParentController() {
+		self.previewView.setBackgroundAlpha(to: 0)
+		self.previewView.hideBars()
+	}
+	
+}
+
+private func += (lhs: inout CGPoint, rhs: CGPoint) {
+	lhs = CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }

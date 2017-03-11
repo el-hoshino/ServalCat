@@ -53,6 +53,7 @@ class ImagePreviewViewTitleBar: UIView, Showable, Hideable {
 		let view = self.backButton
 		view.setTitleColor(.white, for: .normal)
 		view.setTitle("⬅️", for: .normal)
+		view.addTarget(self, action: #selector(self.onBackButtonTapped(sender:)), for: .touchUpInside)
 		self.addSubview(view)
 	}
 	
