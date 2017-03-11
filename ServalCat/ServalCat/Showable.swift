@@ -15,7 +15,9 @@ protocol Showable: class {
 extension Showable where Self: UIView {
 	
 	private func setAlpha() {
-		self.alpha = 1
+		UIView.animate(withDuration: 0.1) {
+			self.alpha = 1
+		}
 	}
 	
 	func show() {

@@ -27,7 +27,7 @@ public class ImagePreviewView: UIView {
 	fileprivate let toolBar: ImagePreviewViewToolBar
 	
 	fileprivate let previousImageView: ImagePreviewViewImageView
-	let currentImageView: ImagePreviewViewImageView
+	fileprivate let currentImageView: ImagePreviewViewImageView
 	fileprivate let nextImageView: ImagePreviewViewImageView
 	
 	fileprivate var hideBarsTimer: Timer?
@@ -229,6 +229,22 @@ extension ImagePreviewView {
 		self.previousImageView.frame = self.viewFrame(for: .previous, withOffset: translation)
 		self.currentImageView.frame = self.viewFrame(for: .current, withOffset: translation)
 		self.nextImageView.frame = self.viewFrame(for: .next, withOffset: translation)
+		
+	}
+	
+}
+
+extension ImagePreviewView {
+	
+	func setImageDismissingProgress(to progress: CGFloat) {
+		
+		let alpha = 1 - progress
+		self.background.alpha = alpha
+		
+		let width = (1 - progress * progress) * self.bounds.width
+		let x = (self.bounds.width - width) / 2
+		self.currentImageView.frame.origin.x = x
+		self.currentImageView.frame.size.width = width
 		
 	}
 	

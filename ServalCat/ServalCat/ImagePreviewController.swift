@@ -103,11 +103,11 @@ public class ImagePreviewController: UIViewController {
 				self?.moveImagePreview(in: view, by: gesture.translation(in: nil))
 				
 			case .cancelled:
-				self?.resetPosition(of: view)
+				self?.moveImagePreview(in: view, by: .zero)
 				self?.resetState()
 				
 			case .ended:
-				self?.switchImage(in: view, underSpeed: gesture.velocity(in: nil))
+				self?.setupImage(in: view, underSpeed: gesture.velocity(in: nil))
 				self?.resetState()
 				
 			case .possible, .failed:
@@ -198,7 +198,7 @@ extension ImagePreviewController {
 		
 	}
 	
-	private func switchImage(in view: ImagePreviewView, by translation: CGPoint) {
+	private func panImageHorizontally(in view: ImagePreviewView, by translation: CGPoint) {
 		
 		var translation = CGPoint(x: translation.x, y: 0)
 		
@@ -214,6 +214,16 @@ extension ImagePreviewController {
 		}
 		
 		view.setImageViewPosition(withTranslation: translation)
+		
+	}
+	
+	fileprivate func panImageVertically(in view: ImagePreviewView, by translation: CGPoint) {
+		
+		let translation = CGPoint(x: 0, y: translation.y)
+		let dismissingProgress = abs(translation.y) / view.bounds.height
+		
+		view.setImageViewPosition(withTranslation: translation)
+		view.setImageDismissingProgress(to: dismissingProgress)
 		
 	}
 	
@@ -259,6 +269,24 @@ extension ImagePreviewController {
 		
 	}
 	
+	fileprivate func dismissImage(in view: ImagePreviewView, underSpeed velocity: CGPoint) {
+		
+		switch (view.currentImagePosition.y, velocity.y) {
+		case let (a, b) where (a > 0 && b < 0) || (a < 0 && b > 0):
+			self.moveImagePreview(in: view, by: .zero)
+			
+		case let (a, b) where (a > 0 && b > 0) || (a < 0 && b < 0):
+			self.dismissAction?(self)
+			
+		case let (a, _) where (a < view.bounds.height * -0.2) || (a > view.bounds.height * 0.2):
+			self.dismissAction?(self)
+			
+		default:
+			self.moveImagePreview(in: view, by: .zero)
+		}
+		
+	}
+	
 	fileprivate func resetState() {
 		
 		self.state = .normal
@@ -267,24 +295,31 @@ extension ImagePreviewController {
 	
 	fileprivate func moveImagePreview(in view: ImagePreviewView, by translation: CGPoint) {
 		
-		var translation = translation
+		switch self.state {
+		case .normal:
+			return
+			
+		case .switchingImage:
+			self.panImageHorizontally(in: view, by: translation)
+			
+		case .dismissing:
+			self.panImageVertically(in: view, by: translation)
+		}
+		
+	}
+	
+	fileprivate func setupImage(in view: ImagePreviewView, underSpeed velocity: CGPoint) {
 		
 		switch self.state {
 		case .normal:
 			return
 			
 		case .switchingImage:
-			self.switchImage(in: view, by: translation)
+			self.switchImage(in: view, underSpeed: velocity)
 			
 		case .dismissing:
-			translation.x = 0
+			self.dismissImage(in: view, underSpeed: velocity)
 		}
-		
-	}
-	
-	fileprivate func resetPosition(of view: ImagePreviewView) {
-		
-		self.moveImagePreview(in: view, by: .zero)
 		
 	}
 	

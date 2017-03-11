@@ -15,7 +15,9 @@ protocol Hideable: class {
 extension Hideable where Self: UIView {
 	
 	private func setAlpha() {
-		self.alpha = 0
+		UIView.animate(withDuration: 0.5) { 
+			self.alpha = 0
+		}
 	}
 	
 	func hide() {
