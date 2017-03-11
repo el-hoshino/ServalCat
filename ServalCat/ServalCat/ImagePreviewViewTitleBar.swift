@@ -32,10 +32,6 @@ class ImagePreviewViewTitleBar: UIView, Showable, Hideable {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	deinit {
-		print("ImagePreviewViewTitleBar deinited")
-	}
-	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		self.layoutTitleLabel()

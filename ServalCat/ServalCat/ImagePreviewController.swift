@@ -49,10 +49,6 @@ public class ImagePreviewController: UIViewController {
 		super.init(coder: aDecoder)
 	}
 	
-	deinit {
-		print("ImagePreviewController deinit")
-	}
-	
 	public override func loadView() {
 		self.previewView.frame = UIScreen.main.bounds
 		self.previewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
