@@ -119,6 +119,7 @@ public class ImagePreviewView: UIView {
 	private func setupCurrentImageView() {
 		let view = self.currentImageView
 		view.frame = self.bounds
+		view.alpha = 0
 		view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 	}
 	

@@ -351,6 +351,7 @@ extension ImagePreviewController {
 	
 	func showUpAfterMovedToParentController() {
 		self.previewView.setBackgroundAlpha(to: 1)
+		self.previewView.setCurrentImageViewAlpha(to: 1)
 		self.previewView.showBars()
 		self.previewView.placePreviewImages()
 		
@@ -358,6 +359,7 @@ extension ImagePreviewController {
 	
 	func hideBeforeRemovingFromParentController(andMoveCurrentImageTo frame: CGRect?) {
 		self.previewView.setBackgroundAlpha(to: 0)
+		self.previewView.setCurrentImageViewAlpha(to: 0)
 		self.previewView.hideBars()
 		self.previewView.setCurrentImageFrame(frame)
 	}
