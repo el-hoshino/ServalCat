@@ -27,17 +27,18 @@ extension UIViewController {
 			let frame = thumbnailView.convert(thumbnailView.bounds, to: controller.previewView)
 			controller.initialize(imageIndex: index, initialFrame: frame)
 			
-			UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+			UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
 				controller.showUpAfterMovedToParentController()
 				
-			}, completion: { finished in
+			}, completion: { _ in
+				controller.postShowUpProcess()
 				self.viewDidDisappear(animated)
 			})
 			
 		} else {
 			controller.initialize(imageIndex: index, initialFrame: nil)
 			controller.showUpAfterMovedToParentController()
-			controller.viewDidAppear(animated)
+			controller.postShowUpProcess()
 			self.viewDidDisappear(animated)
 		}
 		
@@ -55,6 +56,8 @@ extension UIViewController {
 		
 		self.viewWillAppear(animated)
 		
+		controller.preHideProcess()
+		
 		func postMoveAction() {
 			controller.view.removeFromSuperview()
 			controller.removeFromParentViewController()
@@ -65,7 +68,7 @@ extension UIViewController {
 			
 			let frame = thumbnailView.convert(thumbnailView.bounds, to: controller.previewView)
 			
-			UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+			UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
 				controller.hideBeforeRemovingFromParentController(andMoveCurrentImageTo: frame)
 				
 			}, completion: { (finished) in

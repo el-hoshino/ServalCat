@@ -111,13 +111,20 @@ public class ImagePreviewView: UIView {
 		self.addSubview(self.toolBar)
 	}
 	
+	private func setupPreviousAndNextImageView() {
+		self.previousImageView.isHidden = true
+		self.nextImageView.isHidden = true
+	}
+	
 	private func setupCurrentImageView() {
 		let view = self.currentImageView
 		view.frame = self.bounds
+		view.alpha = 0
 		view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 	}
 	
 	private func setupSubviews() {
+		self.setupPreviousAndNextImageView()
 		self.setupCurrentImageView()
 	}
 	
@@ -251,7 +258,7 @@ extension ImagePreviewView {
 	
 	private func animate(_ animations: @escaping () -> Void, preSwitching: (() -> Void)?) {
 		
-		UIView.animate(withDuration: 0.2, animations: { 
+		UIView.animate(withDuration: 0.15, animations: {
 			animations()
 			
 		}) { (_) in
@@ -340,6 +347,20 @@ extension ImagePreviewView {
 
 extension ImagePreviewView {
 	
+	func showPreviousAndNextImagePreviewView() {
+		self.previousImageView.isHidden = false
+		self.nextImageView.isHidden = false
+	}
+	
+	func hidePreviousAndNextImagePreoviewView() {
+		self.previousImageView.isHidden = true
+		self.nextImageView.isHidden = true
+	}
+	
+}
+
+extension ImagePreviewView {
+	
 	func updateImages() {
 		
 		guard let image = self.dataSource?.getImage(for: self) else {
@@ -384,7 +405,6 @@ extension ImagePreviewView {
 	}
 	
 }
-
 
 private func += (lhs: inout CGPoint, rhs: CGPoint) {
 	lhs = CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)

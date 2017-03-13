@@ -131,6 +131,14 @@ public class ImagePreviewController: UIViewController {
 
 extension ImagePreviewController {
 	
+	public var currentImageIndex: Int {
+		return self.imageManager.index
+	}
+	
+}
+
+extension ImagePreviewController {
+	
 	fileprivate func onBackButtonTapped() {
 		self.dismissAction?(self)
 	}
@@ -351,6 +359,7 @@ extension ImagePreviewController {
 	
 	func showUpAfterMovedToParentController() {
 		self.previewView.setBackgroundAlpha(to: 1)
+		self.previewView.setCurrentImageViewAlpha(to: 1)
 		self.previewView.showBars()
 		self.previewView.placePreviewImages()
 		
@@ -358,8 +367,21 @@ extension ImagePreviewController {
 	
 	func hideBeforeRemovingFromParentController(andMoveCurrentImageTo frame: CGRect?) {
 		self.previewView.setBackgroundAlpha(to: 0)
+		self.previewView.setCurrentImageViewAlpha(to: 0)
 		self.previewView.hideBars()
 		self.previewView.setCurrentImageFrame(frame)
+	}
+	
+}
+
+extension ImagePreviewController {
+	
+	func postShowUpProcess() {
+		self.previewView.showPreviousAndNextImagePreviewView()
+	}
+	
+	func preHideProcess() {
+		self.previewView.hidePreviousAndNextImagePreoviewView()
 	}
 	
 }
