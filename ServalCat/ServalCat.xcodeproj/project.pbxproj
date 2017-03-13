@@ -98,7 +98,6 @@
 				165E63031E73C29800397E58 /* Showable.swift */,
 				165E62FC1E73C29800397E58 /* Hideable.swift */,
 				165E63531E73C95100397E58 /* UIViewController.swift */,
-				165E635E1E73F92E00397E58 /* ThumbnailImageButton.swift */,
 				165E62FE1E73C29800397E58 /* ImagePreviewController.swift */,
 				165E62FD1E73C29800397E58 /* ImageManager.swift */,
 				165E62FF1E73C29800397E58 /* ImagePreviewView.swift */,
@@ -106,6 +105,7 @@
 				165E63001E73C29800397E58 /* ImagePreviewViewTitleBar.swift */,
 				165E63011E73C29800397E58 /* ImagePreviewViewToolBar.swift */,
 				165E63571E73D0A700397E58 /* ImagePreviewViewImageView.swift */,
+				165E635E1E73F92E00397E58 /* ThumbnailImageButton.swift */,
 			);
 			path = ServalCat;
 			sourceTree = "<group>";
