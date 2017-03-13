@@ -131,6 +131,14 @@ public class ImagePreviewController: UIViewController {
 
 extension ImagePreviewController {
 	
+	public var currentImageIndex: Int {
+		return self.imageManager.index
+	}
+	
+}
+
+extension ImagePreviewController {
+	
 	fileprivate func onBackButtonTapped() {
 		self.dismissAction?(self)
 	}
