@@ -258,7 +258,7 @@ extension ImagePreviewView {
 	
 	private func animate(_ animations: @escaping () -> Void, preSwitching: (() -> Void)?) {
 		
-		UIView.animate(withDuration: 0.2, animations: { 
+		UIView.animate(withDuration: 0.15, animations: {
 			animations()
 			
 		}) { (_) in
