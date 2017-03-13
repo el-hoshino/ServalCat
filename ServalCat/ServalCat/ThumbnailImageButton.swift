@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ThumbnailImageButton: UIButton{
+public class ThumbnailImageButton: UIButton {
 	
 	fileprivate var onButtonTapped: ((ThumbnailImageButton) -> Void)?
 	
