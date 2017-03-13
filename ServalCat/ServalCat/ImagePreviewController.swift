@@ -363,3 +363,15 @@ extension ImagePreviewController {
 	}
 	
 }
+
+extension ImagePreviewController {
+	
+	func postShowUpProcess() {
+		self.previewView.showPreviousAndNextImagePreviewView()
+	}
+	
+	func preHideProcess() {
+		self.previewView.hidePreviousAndNextImagePreoviewView()
+	}
+	
+}

@@ -30,14 +30,15 @@ extension UIViewController {
 			UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
 				controller.showUpAfterMovedToParentController()
 				
-			}, completion: { finished in
+			}, completion: { _ in
+				controller.postShowUpProcess()
 				self.viewDidDisappear(animated)
 			})
 			
 		} else {
 			controller.initialize(imageIndex: index, initialFrame: nil)
 			controller.showUpAfterMovedToParentController()
-			controller.viewDidAppear(animated)
+			controller.postShowUpProcess()
 			self.viewDidDisappear(animated)
 		}
 		
@@ -54,6 +55,8 @@ extension UIViewController {
 		controller.willMove(toParentViewController: nil)
 		
 		self.viewWillAppear(animated)
+		
+		controller.preHideProcess()
 		
 		func postMoveAction() {
 			controller.view.removeFromSuperview()
