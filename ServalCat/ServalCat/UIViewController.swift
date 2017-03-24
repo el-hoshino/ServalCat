@@ -27,7 +27,7 @@ extension UIViewController {
 			let frame = thumbnailView.convert(thumbnailView.bounds, to: controller.previewView)
 			controller.initialize(imageIndex: index, initialFrame: frame)
 			
-			UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+			UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
 				controller.showUpAfterMovedToParentController()
 				
 			}, completion: { _ in
@@ -68,7 +68,7 @@ extension UIViewController {
 			
 			let frame = thumbnailView.convert(thumbnailView.bounds, to: controller.previewView)
 			
-			UIView.animate(withDuration: 0.15, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
+			UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
 				controller.hideBeforeRemovingFromParentController(andMoveCurrentImageTo: frame)
 				
 			}, completion: { (finished) in
