@@ -36,7 +36,9 @@ class ImagePreviewViewToolBar: UIView {
 		let buttons = self.subviews.flatMap { $0 as? UIButton }
 		let buttonCount = buttons.count
 		let buttonWidth = self.bounds.width / CGFloat(buttonCount)
-		buttons.enumerated().forEach { (i, button) in
+		buttons.enumerated().forEach { (buttonPair) in
+			let i = buttonPair.offset
+			let button = buttonPair.element
 			button.frame.origin.x = buttonWidth * CGFloat(i)
 			button.frame.origin.y = 0
 			button.frame.size.width = buttonWidth

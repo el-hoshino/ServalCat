@@ -80,7 +80,7 @@ public class ImagePreviewController: UIViewController {
 	
 	private func setupOnImageTappedGesture() {
 		
-		self.previewView.setOnImageTappedAction { [weak self] (_) in
+		self.previewView.setOnImageTappedAction { [weak self] (_, _) in
 			self?.previewView.showBars()
 		}
 		
